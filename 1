@@ -1,0 +1,29 @@
+import numpy as np
+import os
+path=(r"C:\SEGMENTACIÓN VERTEBRAS\all_lumbar\all_lumbar_2.npy")
+lumbar11=np.load(path)
+lumbar11.shape
+#Para ver tamaño, unas 2400 imágenes aprox de 515 por 512 por carpeta. en Total 34 carpetas distribuidas entre las 5 regiones
+
+
+path=(r"C:\SEGMENTACIÓN VERTEBRAS")
+classes=os.listdir(path)
+lista=[]
+for fichero in classes:
+    joins=os.path.join(path, fichero)
+    subclasses=os.listdir(joins)
+    for i in range(len(subclasses)):
+        ficheros=joins+"/"+subclasses[i]
+        ficheros=os.path.abspath(ficheros)
+        lista.append(ficheros)
+        
+        
+print(lista)
+
+nclasses=len(classes)
+print(nclasses)
+
+imagess=[]
+for i in range(len(lista):
+    images=np.load(lista[i])
+    imagess.apend(images) #Aquí se añadiría toda la información en una sola lista, para luego poder hacer el mix y separar la info como hace en el link para poder crear el modelo y compilarlo
